@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 
 		build : {
 			'moment-timezone-with-data'           : true,
-			'moment-timezone-with-data-2010-2020' : [2010, 2020]
+			'moment-timezone-with-data-2012-2022' : [2012, 2022]
 		},
 
 		uglify : {
@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 				files: {
 					'builds/moment-timezone.min.js'                     : 'moment-timezone.js',
 					'builds/moment-timezone-with-data.min.js'           : 'builds/moment-timezone-with-data.js',
-					'builds/moment-timezone-with-data-2010-2020.min.js' : 'builds/moment-timezone-with-data-2010-2020.js'
+					'builds/moment-timezone-with-data-2012-2022.min.js' : 'builds/moment-timezone-with-data-2012-2022.js'
 				}
 			},
 			options: {
@@ -47,6 +47,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 
 	grunt.registerTask('release', ['jshint', 'data', 'nodeunit', 'build', 'uglify']);
+
+	grunt.registerTask('releaseNoData', ['jshint', 'nodeunit', 'build', 'uglify']);
 
 	grunt.registerTask('default', ['jshint', 'nodeunit']);
 };

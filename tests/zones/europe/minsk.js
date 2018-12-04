@@ -3,6 +3,11 @@
 var helpers = require("../../helpers/helpers");
 
 exports["Europe/Minsk"] = {
+
+	"guess:by:offset" : helpers.makeTestGuess("Europe/Minsk", { offset: true, expect: "Europe/Moscow" }),
+
+	"guess:by:abbr" : helpers.makeTestGuess("Europe/Minsk", { abbr: true, expect: "Europe/Moscow" }),
+
 	"1924" : helpers.makeTestYear("Europe/Minsk", [
 		["1924-05-01T22:09:59+00:00", "23:59:59", "MMT", -110],
 		["1924-05-01T22:10:00+00:00", "00:10:00", "EET", -120]
@@ -108,10 +113,10 @@ exports["Europe/Minsk"] = {
 	]),
 
 	"1992" : helpers.makeTestYear("Europe/Minsk", [
-		["1992-03-28T21:59:59+00:00", "23:59:59", "EET", -120],
-		["1992-03-28T22:00:00+00:00", "01:00:00", "EEST", -180],
-		["1992-09-26T21:59:59+00:00", "00:59:59", "EEST", -180],
-		["1992-09-26T22:00:00+00:00", "00:00:00", "EET", -120]
+		["1992-03-28T23:59:59+00:00", "01:59:59", "EET", -120],
+		["1992-03-29T00:00:00+00:00", "03:00:00", "EEST", -180],
+		["1992-09-26T23:59:59+00:00", "02:59:59", "EEST", -180],
+		["1992-09-27T00:00:00+00:00", "02:00:00", "EET", -120]
 	]),
 
 	"1993" : helpers.makeTestYear("Europe/Minsk", [
@@ -238,15 +243,5 @@ exports["Europe/Minsk"] = {
 		["2010-03-28T00:00:00+00:00", "03:00:00", "EEST", -180],
 		["2010-10-30T23:59:59+00:00", "02:59:59", "EEST", -180],
 		["2010-10-31T00:00:00+00:00", "02:00:00", "EET", -120]
-	]),
-
-	"2011" : helpers.makeTestYear("Europe/Minsk", [
-		["2011-03-26T23:59:59+00:00", "01:59:59", "EET", -120],
-		["2011-03-27T00:00:00+00:00", "03:00:00", "FET", -180]
-	]),
-
-	"2014" : helpers.makeTestYear("Europe/Minsk", [
-		["2014-10-25T21:59:59+00:00", "00:59:59", "FET", -180],
-		["2014-10-25T22:00:00+00:00", "01:00:00", "MSK", -180]
 	])
 };

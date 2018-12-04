@@ -3,6 +3,11 @@
 var helpers = require("../../helpers/helpers");
 
 exports["Australia/Brisbane"] = {
+
+	"guess:by:offset" : helpers.makeTestGuess("Australia/Brisbane", { offset: true }),
+
+	"guess:by:abbr" : helpers.makeTestGuess("Australia/Brisbane", { abbr: true }),
+
 	"1916" : helpers.makeTestYear("Australia/Brisbane", [
 		["1916-12-31T14:00:59+00:00", "00:00:59", "AEST", -600],
 		["1916-12-31T14:01:00+00:00", "01:01:00", "AEDT", -660]
@@ -64,10 +69,5 @@ exports["Australia/Brisbane"] = {
 		["1991-03-02T16:00:00+00:00", "02:00:00", "AEST", -600],
 		["1991-10-26T15:59:59+00:00", "01:59:59", "AEST", -600],
 		["1991-10-26T16:00:00+00:00", "03:00:00", "AEDT", -660]
-	]),
-
-	"1992" : helpers.makeTestYear("Australia/Brisbane", [
-		["1992-02-29T15:59:59+00:00", "02:59:59", "AEDT", -660],
-		["1992-02-29T16:00:00+00:00", "02:00:00", "AEST", -600]
 	])
 };

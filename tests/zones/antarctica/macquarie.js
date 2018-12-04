@@ -3,6 +3,11 @@
 var helpers = require("../../helpers/helpers");
 
 exports["Antarctica/Macquarie"] = {
+
+	"guess:by:offset" : helpers.makeTestGuess("Antarctica/Macquarie", { offset: true, expect: "Pacific/Norfolk" }),
+
+	"guess:by:abbr" : helpers.makeTestGuess("Antarctica/Macquarie", { abbr: true, expect: "Pacific/Norfolk" }),
+
 	"1916" : helpers.makeTestYear("Antarctica/Macquarie", [
 		["1916-09-30T15:59:59+00:00", "01:59:59", "AEST", -600],
 		["1916-09-30T16:00:00+00:00", "03:00:00", "AEDT", -660]
@@ -15,11 +20,11 @@ exports["Antarctica/Macquarie"] = {
 
 	"1919" : helpers.makeTestYear("Antarctica/Macquarie", [
 		["1919-03-31T13:59:59+00:00", "23:59:59", "AEST", -600],
-		["1919-03-31T14:00:00+00:00", "14:00:00", "zzz", 0]
+		["1919-03-31T14:00:00+00:00", "14:00:00", "-00", 0]
 	]),
 
 	"1948" : helpers.makeTestYear("Antarctica/Macquarie", [
-		["1948-03-24T23:59:59+00:00", "23:59:59", "zzz", 0],
+		["1948-03-24T23:59:59+00:00", "23:59:59", "-00", 0],
 		["1948-03-25T00:00:00+00:00", "10:00:00", "AEST", -600]
 	]),
 
@@ -320,10 +325,5 @@ exports["Antarctica/Macquarie"] = {
 		["2009-04-04T16:00:00+00:00", "02:00:00", "AEST", -600],
 		["2009-10-03T15:59:59+00:00", "01:59:59", "AEST", -600],
 		["2009-10-03T16:00:00+00:00", "03:00:00", "AEDT", -660]
-	]),
-
-	"2010" : helpers.makeTestYear("Antarctica/Macquarie", [
-		["2010-04-03T15:59:59+00:00", "02:59:59", "AEDT", -660],
-		["2010-04-03T16:00:00+00:00", "03:00:00", "MIST", -660]
 	])
 };

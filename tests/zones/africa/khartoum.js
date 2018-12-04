@@ -3,10 +3,10 @@
 var helpers = require("../../helpers/helpers");
 
 exports["Africa/Khartoum"] = {
-	"1930" : helpers.makeTestYear("Africa/Khartoum", [
-		["1930-12-31T21:49:51+00:00", "23:59:59", "LMT", -7808 / 60],
-		["1930-12-31T21:49:52+00:00", "23:49:52", "CAT", -120]
-	]),
+
+	"guess:by:offset" : helpers.makeTestGuess("Africa/Khartoum", { offset: true }),
+
+	"guess:by:abbr" : helpers.makeTestGuess("Africa/Khartoum", { abbr: true }),
 
 	"1970" : helpers.makeTestYear("Africa/Khartoum", [
 		["1970-04-30T21:59:59+00:00", "23:59:59", "CAT", -120],

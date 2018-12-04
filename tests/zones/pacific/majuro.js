@@ -3,8 +3,10 @@
 var helpers = require("../../helpers/helpers");
 
 exports["Pacific/Majuro"] = {
-	"1969" : helpers.makeTestYear("Pacific/Majuro", [
-		["1969-09-30T12:59:59+00:00", "23:59:59", "MHT", -660],
-		["1969-09-30T13:00:00+00:00", "01:00:00", "MHT", -720]
-	])
+
+	"guess:by:offset" : helpers.makeTestGuess("Pacific/Majuro", { offset: true, expect: "Asia/Kamchatka" }),
+
+	"guess:by:abbr" : helpers.makeTestGuess("Pacific/Majuro", { abbr: true, expect: "Asia/Kamchatka" }),
+
+
 };

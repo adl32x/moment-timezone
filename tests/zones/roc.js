@@ -3,8 +3,13 @@
 var helpers = require("../helpers/helpers");
 
 exports["ROC"] = {
+
+	"guess:by:offset" : helpers.makeTestGuess("ROC", { offset: true, expect: "Asia/Manila" }),
+
+	"guess:by:abbr" : helpers.makeTestGuess("ROC", { abbr: true, expect: "Asia/Shanghai" }),
+
 	"1937" : helpers.makeTestYear("ROC", [
-		["1937-09-30T15:59:59+00:00", "23:59:59", "JWST", -480],
+		["1937-09-30T15:59:59+00:00", "23:59:59", "CST", -480],
 		["1937-09-30T16:00:00+00:00", "01:00:00", "JST", -540]
 	]),
 
@@ -141,8 +146,6 @@ exports["ROC"] = {
 
 	"1979" : helpers.makeTestYear("ROC", [
 		["1979-06-30T15:59:59+00:00", "23:59:59", "CST", -480],
-		["1979-06-30T16:00:00+00:00", "01:00:00", "CDT", -540],
-		["1979-09-30T14:59:59+00:00", "23:59:59", "CDT", -540],
-		["1979-09-30T15:00:00+00:00", "23:00:00", "CST", -480]
+		["1979-06-30T16:00:00+00:00", "01:00:00", "CDT", -540]
 	])
 };

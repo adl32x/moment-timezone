@@ -1,7 +1,8 @@
 "use strict";
 
 var path = require('path'),
-	moment = require('moment');
+	moment = require('moment'),
+	populations = require('./population.json');
 
 module.exports = function (grunt) {
 	grunt.registerTask('data-collect', '4. Collect all data from zdump(8) into a single json file.', function (version) {
@@ -10,15 +11,17 @@ module.exports = function (grunt) {
 		var files = grunt.file.expand({ filter : 'isFile', cwd : 'temp/zdump/' + version }, '**/*.zdump'),
 			data  = [];
 
+		var format = "MMM D HH:mm:ss YYYY";
+
 		files.forEach(function (file) {
 			var lines   = grunt.file.read(path.join('temp/zdump/' + version, file)).split('\n'),
+				name    = file.replace(/\.zdump$/, ''),
 				abbrs   = [],
 				untils  = [],
 				offsets = [];
 
 			lines.forEach(function (line) {
 				var parts  = line.split(/\s+/),
-					format = "MMM D HH:mm:ss YYYY",
 					utc    = moment.utc(parts.slice(2, 6).join(' '), format),
 					local  = moment.utc(parts.slice(9, 13).join(' '), format);
 
@@ -29,11 +32,25 @@ module.exports = function (grunt) {
 				abbrs.push(parts[13]);
 			});
 
+			if (offsets.length === 0 && lines.length === 3 && lines[2].length === 0) {
+				// use alternate zdump format
+				var utcParts   = lines[0].split(/\s+/),
+				    localParts = lines[1].split(/\s+/);
+				
+				var utc   = moment.utc(utcParts.slice(2, 6).join(' '), format),
+				    local = moment.utc(localParts.slice(2, 6).join(' '), format);
+				
+				offsets.push(+utc.diff(local, 'minutes', true).toFixed(4));
+				untils.push(null);
+				abbrs.push(localParts[6]);
+			}
+
 			data.push({
-				name    : file.replace(/\.zdump$/, ''),
-				abbrs   : abbrs,
-				untils  : untils,
-				offsets : offsets
+				name       : name,
+				abbrs      : abbrs,
+				untils     : untils,
+				offsets    : offsets,
+				population : populations[name] | 0
 			});
 		});
 

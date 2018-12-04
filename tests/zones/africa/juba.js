@@ -3,10 +3,10 @@
 var helpers = require("../../helpers/helpers");
 
 exports["Africa/Juba"] = {
-	"1930" : helpers.makeTestYear("Africa/Juba", [
-		["1930-12-31T21:49:51+00:00", "23:59:59", "LMT", -7808 / 60],
-		["1930-12-31T21:49:52+00:00", "23:49:52", "CAT", -120]
-	]),
+
+	"guess:by:offset" : helpers.makeTestGuess("Africa/Juba", { offset: true, expect: "Europe/Moscow" }),
+
+	"guess:by:abbr" : helpers.makeTestGuess("Africa/Juba", { abbr: true, expect: "Africa/Nairobi" }),
 
 	"1970" : helpers.makeTestYear("Africa/Juba", [
 		["1970-04-30T21:59:59+00:00", "23:59:59", "CAT", -120],
@@ -118,10 +118,5 @@ exports["Africa/Juba"] = {
 		["1985-04-27T22:00:00+00:00", "01:00:00", "CAST", -180],
 		["1985-10-14T20:59:59+00:00", "23:59:59", "CAST", -180],
 		["1985-10-14T21:00:00+00:00", "23:00:00", "CAT", -120]
-	]),
-
-	"2000" : helpers.makeTestYear("Africa/Juba", [
-		["2000-01-15T09:59:59+00:00", "11:59:59", "CAT", -120],
-		["2000-01-15T10:00:00+00:00", "13:00:00", "EAT", -180]
 	])
 };

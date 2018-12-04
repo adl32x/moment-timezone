@@ -3,6 +3,11 @@
 var helpers = require("../../helpers/helpers");
 
 exports["Europe/Simferopol"] = {
+
+	"guess:by:offset" : helpers.makeTestGuess("Europe/Simferopol", { offset: true, expect: "Europe/Moscow" }),
+
+	"guess:by:abbr" : helpers.makeTestGuess("Europe/Simferopol", { abbr: true, expect: "Europe/Moscow" }),
+
 	"1924" : helpers.makeTestYear("Europe/Simferopol", [
 		["1924-05-01T21:43:59+00:00", "23:59:59", "SMT", -136],
 		["1924-05-01T21:44:00+00:00", "23:44:00", "EET", -120]
@@ -263,8 +268,6 @@ exports["Europe/Simferopol"] = {
 
 	"2014" : helpers.makeTestYear("Europe/Simferopol", [
 		["2014-03-29T23:59:59+00:00", "01:59:59", "EET", -120],
-		["2014-03-30T00:00:00+00:00", "04:00:00", "MSK", -240],
-		["2014-10-25T21:59:59+00:00", "01:59:59", "MSK", -240],
-		["2014-10-25T22:00:00+00:00", "01:00:00", "MSK", -180]
+		["2014-03-30T00:00:00+00:00", "04:00:00", "MSK", -240]
 	])
 };

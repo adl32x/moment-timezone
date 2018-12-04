@@ -3,19 +3,14 @@
 var helpers = require("../../helpers/helpers");
 
 exports["Asia/Seoul"] = {
-	"1908" : helpers.makeTestYear("Asia/Seoul", [
-		["1908-03-31T15:32:07+00:00", "23:59:59", "LMT", -30472 / 60],
-		["1908-03-31T15:32:08+00:00", "00:02:08", "KST", -510]
-	]),
+
+	"guess:by:offset" : helpers.makeTestGuess("Asia/Seoul", { offset: true, expect: "Asia/Tokyo" }),
+
+	"guess:by:abbr" : helpers.makeTestGuess("Asia/Seoul", { abbr: true }),
 
 	"1911" : helpers.makeTestYear("Asia/Seoul", [
 		["1911-12-31T15:29:59+00:00", "23:59:59", "KST", -510],
-		["1911-12-31T15:30:00+00:00", "00:30:00", "JCST", -540]
-	]),
-
-	"1937" : helpers.makeTestYear("Asia/Seoul", [
-		["1937-09-30T14:59:59+00:00", "23:59:59", "JCST", -540],
-		["1937-09-30T15:00:00+00:00", "00:00:00", "JST", -540]
+		["1911-12-31T15:30:00+00:00", "00:30:00", "JST", -540]
 	]),
 
 	"1945" : helpers.makeTestYear("Asia/Seoul", [
@@ -84,8 +79,6 @@ exports["Asia/Seoul"] = {
 
 	"1988" : helpers.makeTestYear("Asia/Seoul", [
 		["1988-05-07T16:59:59+00:00", "01:59:59", "KST", -540],
-		["1988-05-07T17:00:00+00:00", "03:00:00", "KDT", -600],
-		["1988-10-08T16:59:59+00:00", "02:59:59", "KDT", -600],
-		["1988-10-08T17:00:00+00:00", "02:00:00", "KST", -540]
+		["1988-05-07T17:00:00+00:00", "03:00:00", "KDT", -600]
 	])
 };
